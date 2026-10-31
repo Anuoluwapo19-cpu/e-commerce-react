@@ -1,0 +1,143 @@
+.cartContainer {
+  width: min(1000px, 92%);
+  min-height: 60vh;
+  margin: 0 auto;
+  padding: 36px 0 56px;
+}
+
+.cartContainer > h1 {
+  margin-bottom: 24px;
+  color: #34252b;
+  font-size: 1.8rem;
+}
+
+.emptyCartMessage {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.emptyCartMessage a,
+.continueLink {
+  color: #71364e;
+  font-weight: 600;
+}
+
+.cartItems {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cartItem {
+  display: grid;
+  grid-template-columns: 76px minmax(120px, 1fr) auto auto auto;
+  align-items: center;
+  gap: 16px;
+  padding: 14px;
+  border: 1px solid #eee5e8;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.cartItem img {
+  width: 76px;
+  height: 76px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.cartItemInfo h2 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+}
+
+.cartItemInfo p {
+  margin: 0;
+  color: #76666d;
+  font-size: 0.9rem;
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantityControls button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #c9a8b4;
+  border-radius: 4px;
+  background: #fff;
+  color: #493740;
+  cursor: pointer;
+  font: inherit;
+}
+
+.cartItemSubtotal {
+  min-width: 76px;
+  text-align: right;
+}
+
+.removeButton {
+  border: 0;
+  background: none;
+  color: #8f3543;
+  cursor: pointer;
+  font: inherit;
+}
+
+.cartSummary {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.cartSummary h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.checkoutLink {
+  padding: 11px 16px;
+  border-radius: 4px;
+  background: #71364e;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+@media (max-width: 640px) {
+  .cartItem {
+    grid-template-columns: 60px minmax(0, 1fr) auto;
+    gap: 10px;
+  }
+
+  .cartItem img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .cartItemSubtotal {
+    grid-column: 2;
+    text-align: left;
+  }
+
+  .removeButton {
+    grid-column: 3;
+    grid-row: 2;
+  }
+
+  .quantityControls {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .cartSummary {
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 12px;
+  }
+}

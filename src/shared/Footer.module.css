@@ -1,0 +1,12 @@
+.siteFooter {
+  margin-top: auto;
+  padding: 20px 0;
+  background: #2f2a25;
+  color: #fff;
+  text-align: center;
+}
+
+.container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
