@@ -1,0 +1,1 @@
+var e={container:`_container_1nkk5_1`,authContainer:`_authContainer_1nkk5_11`,authBox:`_authBox_1nkk5_15`,errorMessage:`_errorMessage_1nkk5_54`,btn:`_btn_1nkk5_61`,authSwitch:`_authSwitch_1nkk5_76`};export{e as t};

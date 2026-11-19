@@ -59,6 +59,8 @@ const Navbar = () => {
 
         <nav className={style.mainNav}>
           <Link to="/">Home</Link>
+          <Link to="/create-product">Create Product</Link>
+
           <Link to="/cart">
             Cart (<span>{cartCount}</span>)
           </Link>

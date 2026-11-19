@@ -1,51 +1,58 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import style from "./Home.module.css";
-
-const products = [
-  {
-    id: 1,
-    name: "Classic Jacket",
-    category: "men",
-    price: 59.99,
-    image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600",
-  },
-  {
-    id: 2,
-    name: "Summer Dress",
-    category: "women",
-    price: 44.99,
-    image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600",
-  },
-  {
-    id: 3,
-    name: "Kids' Hoodie",
-    category: "children",
-    price: 29.99,
-    image: "https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=600",
-  },
-  {
-    id: 1,
-    name: "Classic Jacket",
-    category: "men",
-    price: 59.99,
-    image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600",
-  },
-  {
-    id: 2,
-    name: "Summer Dress",
-    category: "women",
-    price: 44.99,
-    image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600",
-  },
-  {
-    id: 3,
-    name: "Kids' Hoodie",
-    category: "children",
-    price: 29.99,
-    image: "https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=600",
-  },
-];
-
+import apiClient from "../../axiosClient";
+// const products = [
+//   {
+//     id: 1,
+//     name: "Classic Jacket",
+//     category: "men",
+//     price: 59.99,
+//     image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600",
+//   },
+//   {
+//     id: 2,
+//     name: "Summer Dress",
+//     category: "women",
+//     price: 44.99,
+//     image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600",
+//   },
+//   {
+//     id: 3,
+//     name: "Kids' Hoodie",
+//     category: "children",
+//     price: 29.99,
+//     image: "https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=600",
+//   },
+//   {
+//     id: 1,
+//     name: "Classic Jacket",
+//     category: "men",
+//     price: 59.99,
+//     image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600",
+//   },
+//   {
+//     id: 2,
+//     name: "Summer Dress",
+//     category: "women",
+//     price: 44.99,
+//     image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600",
+//   },
+//   {
+//     id: 3,
+//     name: "Kids' Hoodie",
+//     category: "children",
+//     price: 29.99,
+//     image: "https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=600",
+//   },
+// ];
+const editProduct = await apiClient.updateProduct(
+   "6afef914138197af6b87ed8c",
+     {
+      image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600"
+     }
+);
+  const products = await apiClient.getProducts();
+ console.log(products)
 const categories = ["all", "men", "women", "children"];
 
 function readCart() {
@@ -59,6 +66,20 @@ function readCart() {
 const Home = () => {
   const [category, setCategory] = useState("all");
   const [cart, setCart] = useState(readCart);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const data = await apiClient.getProducts();
+        setProducts(data);
+      } catch (error) {
+        console.error("Failed to fetch products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   const visibleProducts =
     category === "all"
